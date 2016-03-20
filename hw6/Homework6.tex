@@ -1,0 +1,416 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{amsmath}
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Homework 6}
+    \author{Roly Vicar\'ia \\ STAT501 Fall 2015}    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \subsubsection{Question 1}\label{question-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \(SSR(X_3 | X_1) = SSE(X_1) - SSE(X_1, X_3) = 510 - 500 = 10\)
+\item
+  The quantity in part (a) represents the reduction in the error sum of
+  squares that resulted when adding \(X_3\) to the model when \(X_1\)
+  was already in the model.
+\item
+  \(SSR(X_1 | X_2, X_3) = SSE(X_2, X_3) - SSE(X_1, X_2, X_3) = 640 - 330 = 310\)
+\item
+  The quantity in part (c) represents the reduction in the error sum of
+  squares that resulted when adding \(X_1\) to the model when \(X_2\)
+  and \(X_3\) were already in the model.
+\item
+  \(Y_i = \beta_0 + \beta_1X_{i,1} + \epsilon_i\)
+\item
+  \(F^* = \frac{SSE(X_1) - SSE(X_1, X_2, X_3)}{(n - 2) - (n - 4)} \div \frac{SSE(X_1, X_2, X_3)}{n - 4} = \frac{510 - 330}{(70 - 2) - (70 - 4)} \div \frac{330}{70 - 4} = 18\)
+\item
+  \(R^2_{Y,2|1} = \frac{SSE(X_1) - SSE(X_1, X_2)}{SSE(X_1)} = \frac{510 - 450}{510} = 0.1176\)
+\item
+  The value in part (g) represents the marginal contribution of \(X_2\)
+  given that \(X_1\) is already in the model. It shows that about 11.7\%
+  of the variation in \(Y\) is reduced after adding \(X_2\) to the
+  model.
+\end{enumerate}
+
+    \subsubsection{Question 2}\label{question-2}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+\end{enumerate}
+
+\begin{longtable}[c]{@{}llllll@{}}
+\toprule
+Source & df & Seq SS & Adj SS & F-statistic based on Adj SS & p-value
+based on Adj SS\tabularnewline
+\midrule
+\endhead
+Regression & 3 & 100.866 & 100.866 & 35.14 & 0.000\tabularnewline
+\(X_1\) & 1 & 67.444 & 33.031 & 34.52 & 0.000\tabularnewline
+\(X_2\) & 1 & 3.883 & 0.160 & 0.167 & 0.684\tabularnewline
+\(X_3\) & 1 & 29.539 & 29.539 & 30.88 & 0.000\tabularnewline
+Error & 93 & 88.976 & 88.976 & ----- & -----\tabularnewline
+Total & 96 & 189.842 & 189.842 & ----- & -----\tabularnewline
+\bottomrule
+\end{longtable}
+
+Coefficients
+
+\begin{longtable}[c]{@{}lllll@{}}
+\toprule
+Term & Coef & SE coef & t-statistic & p-value\tabularnewline
+\midrule
+\endhead
+Constant & 0.58 & 1.24 & 0.45 & 0.652\tabularnewline
+\(X_1\) & 0.34 & 0.058 & 5.88 & 0.000\tabularnewline
+\(X_2\) & -0.01 & 0.0245 & −0.408 & 0.342\tabularnewline
+\(X_3\) & 0.06 & 0.0103 & 5.56 & 0.000\tabularnewline
+\bottomrule
+\end{longtable}
+
+\newpage
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Calculate \(SSR(X_3 | X_1)\):
+
+\begin{align*}
+SSR(X_1, X_2, X_3) &= SSR(X_1) + SSR(X_3 | X_1) + SSR(X_2 | X_1, X_3) \\
+SSR(X_3 | X_1) &= SSR(X_1, X_2, X_3) - SSR(X_1) - SSR(X_2 | X_1, X_3) \\
+	       &= 100.866 - 67.444 - 0.160  \\
+	       &= 33.262
+\end{align*}
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\item
+  One way to think of the difference between the sequential sum of
+  squares and the adjusted sum of squares is that in the sequential sum
+  of squares, the order matters, whereas in the adjusted sum of squares,
+  order doesn't matter. In other words, when looking at the ANOVA table,
+  the sequential sum of squares can be thought of as a snowball that
+  grows as you go down the list of predictors. Each line computes the
+  sum of square of that given predictor assuming the previous predictors
+  are already in the model, but not the ones that follow. In the case of
+  \(X_2\), the sequential sum of square only assumed the presence of
+  \(X_1\). The adjusted sum of square looks at each predictor assuming
+  every other predictor is already in the model. In the case of \(X_2\),
+  we assumed that \(X_1\) and \(X_3\) were already present.
+\item
+  \begin{align*}
+    F^* &= \frac{SSR(X_2, X_3 | X_1)}{p - q} \div \frac{SSE(X_1, X_2, X_3)}{n - p} \\
+	&= \frac{SSR(X_1, X_2, X_3) - SSR(X_1)}{4 - 2} \div \frac{SSE(X_1, X_2, X_3)}{97 - 4} \\
+	&= \frac{100.866 - 67.444}{2} \div \frac{88.976}{93} \\
+	&= 17.467
+  \end{align*}
+\item
+  \(R^2_{Y,2|1} = \frac{SSR(X_2 | X_1)}{SSE(X_1)} = \frac{3.883}{122.398} = 0.0317\)
+\item
+  The value in part (e) represents the marginal contribution of \(X_2\)
+  given that \(X_1\) is already in the model. It shows that about 3.2\%
+  of the variation in \(Y\) is reduced after adding \(X_2\) to the
+  model.
+\end{enumerate}
+
+    \subsubsection{Question 3}\label{question-3}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Analysis of Variance
+\end{enumerate}
+
+\begin{longtable}[c]{@{}lll@{}}
+\toprule
+Source & DF & Seq SS\tabularnewline
+\midrule
+\endhead
+Regression & 3 & 2176606\tabularnewline
+X1 & 1 & 136366\tabularnewline
+X3 & 1 & 2033565\tabularnewline
+X2 & 1 & 6675\tabularnewline
+Error & 48 & 985530\tabularnewline
+Total & 51 & 3162136\tabularnewline
+\bottomrule
+\end{longtable}
+
+\newpage
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\item
+
+\(H_0: \beta_2 = 0\) \\
+\(H_a: \beta_2 \ne 0\)
+
+Full model SSE: 985530 \\
+Reduced model SSE: 992204
+
+\begin{align*}
+F^* &= \frac{SSR(X_2 | X_1, X_3)}{1} \div \frac{SSE(X_1, X_2, X_2)}{52 - 4} \\
+    &= \frac{6675}{1} \div \frac{985530}{48} \\
+    &= 0.3251
+\end{align*}
+
+\(p-value = P(X > 0.3251) = 0.571\)
+
+Because the \emph{p}-value is greater than \(\alpha = 0.05\), we
+conclude that we can drop \(X_2\) from the model.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\item
+  This is the same hypothesis as part (b). The t-statistic is
+  \(-13.2 / 23.1 \approx -0.57\) with a \emph{p}-value of 0.571. The
+  conclusion is the same as above, that we fail to reject the null
+  hypothesis.
+\item
+  \begin{align*}
+   F^* &= \frac{SSR(X_2, X_3 | X_1)}{2} \div \frac{SSE(X_1, X_2, X_3)}{48} \\
+       &= \frac{SSR(X_1, X_2, X_3) - SSR(X_1)}{2} \div \frac{SSE(X_1, X_2, X_3)}{48} \\
+       &= \frac{2176606 - 136366}{2} \div \frac{985530}{48} \\
+       &= 49.685
+  \end{align*}
+  
+  \emph{p}-value is 0.000. Therefore we can reject the null hypothesis and
+conclude that at least one \(\beta_i\) (for \(i = 2,3\)) is not equal to
+0.
+\end{enumerate}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

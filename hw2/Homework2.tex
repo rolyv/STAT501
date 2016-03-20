@@ -1,0 +1,422 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Homework 2}
+    \author{Roly Vicar\'ia \\ STAT501 Fall 2015}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \subsubsection{Question 1}\label{question-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  If the estimate slope is 0, then the straight line would be a
+  horizontal line with \(y = b_0\)
+\item
+  A slope of 0 means that \(y\) is always the same value regardless of
+  the \(x\) value. That means that \(x\) has no effect on \(y\), so
+  they're not linearly related. A non-zero slope, on the other hand,
+  says that a change in \(x\) will give a different value for \(y\),
+  i.e.~they're linearly related.
+\end{enumerate}
+
+    \subsubsection{Question 2}\label{question-2}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  The \(p\)-value for testing \(H_0: \beta_1 = 0\) against the
+  alternative hypothesis \(H_A: \beta_1 \ne 0\) is 0.001. Since this
+  \emph{p}-value is double the \emph{p}-value of testing against
+  \(H_A: \beta_1 > 0\), then the \emph{p}-value for that would be
+  0.0005. There is then sufficient evidence, at the 0.05 level, to
+  conclude that \(\beta_1 > 0\).
+\item
+  The \emph{t}-statistic is calculated using the ``Coef'' value divided
+  by the ``SE Coef'' value. In other words,
+  \(t = \frac{b_1}{s\{b_1\}} = \frac{0.5138}{0.1377} \approx 3.73\)
+\item
+  95\% confidence interval: \(0.5138 \pm t_{0.025,28}(0.1377)\) or
+  (0.2318, 0.7958)
+\item
+  \(R^2 = 1 - \frac{SSE}{SSTO} = 1 - \frac{36.95}{55.34} \approx 0.3323\).
+  This can be interpreted as saying that roughly 33\% of the variation
+  in the left foot lengths can be `explained by' the variation in the
+  left forearm lengths.
+\end{enumerate}
+
+    \subsubsection{Question 3}\label{question-3}
+
+    \begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  The scatterplot does suggest that there may be a positive association
+  between length of stay and risk of infection. There are a couple x
+  values at the far right, but not far enough that I would label them as
+  outliers. \begin{figure}[h!]
+ \centering
+ \includegraphics[scale=.6]{./images/scatterplot_infctRsk-vs-Stay.png}
+ % scatterplot_infctRsk-vs-Stay.png: 577x386 pixel, 96dpi, 15.26x10.21 cm, bb=0 0 433 289
+\end{figure}
+
+\newpage
+\item
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii})}
+  \tightlist
+  \item
+    The estimated regression equation is:
+    \(InfctRsk = -1.160 + 0.5689 Stay\) 
+  \item
+    The slope can be interpreted as saying that for every additional day
+    of hospital stay, the infection risk rises by 0.5689\%
+  \end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii})}
+  \tightlist
+  \item
+    The \emph{t}-statistic given by Minitab is 6.04 with a
+    \emph{p}-value of 0.000. 
+  \item
+    We can conclude that at the 0.05 level, there is enough evidence to
+    say that the slope is not 0 and that there is a positive association
+    between InfctRsk and Stay
+  \end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\item
+  \(R^2\) for the regression is 39.46\%. We can interpret this as saying
+  that about 39.46\% of the variation of InfctRsk is `explained by' the
+  variation in the length of stay.
+\item
+  The scatterplot does not show any obvious relationship between Age and
+  InfctRsk. There is a lot of variability for InfctRsk at all ages.
+  There are two potential outliers for Ages less than 40 and above 65.
+  \begin{figure}[h!]
+ \centering
+ \includegraphics[scale=.6]{./images/scatterplot_infctRsk-vs-Age.png}
+ % scatterplot_infctRsk-vs-Age.png: 575x384 pixel, 96dpi, 15.21x10.16 cm, bb=0 0 431 288
+\end{figure}
+
+\item
+  The estimated regression line is: \(InfctRsk = 3.663 + 0.01694 Age\).
+  The evidence in the output that there might not be a linear
+  relationship is: 1) the low R-sq value, 0.3\%, 2) the high
+  \emph{p}-value, 0.675, which means that at the 0.05 level, we cannot
+  conclude that slope is non-zero.
+\end{enumerate}
+
+    \subsubsection{Question 4}\label{question-4}
+
+    \begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  The estimated slope can be interpreted as saying that the 28-day
+  strength will increase by 0.96 units for every additional unit of
+  7-day strength.
+\item
+  The correlation between X and Y in this example seems strong since the slope is very close to 1. 
+  Therefore the line would be almost a 45 degree angle. It suggests a stronger correlation than a smaller slope. 
+  We can't really comment on the strength of the correlation without more information about the
+  regression, e.g. \(R^2\), \emph{p}-value of \(\beta_1\), etc
+\end{enumerate}
+
+\newpage
+    \subsubsection{Question 5}\label{question-5}
+
+    \begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  Population regression model equation:
+  \(E(Income) = \beta_0 - \beta_1 Age\)
+\item
+  Estimated regression equation: \(Income = 652.1 - 3.328 Age\)
+\item
+  Analysis of Variance
+\end{enumerate}
+
+\begin{longtable}[c]{@{}llllll@{}}
+\toprule
+Source & DF & SS & MS & F-Value & P-Value\tabularnewline
+\midrule
+\endhead
+Regression & 1 & 57575.5 & 57575.5 & 19.80 & 0.000\tabularnewline
+Error & 20 & 58157.08 & 2907.854 &\tabularnewline
+Lack-of-Fit & 15 & 57809.08 & 3853.939 & 55.373 & 0.000\tabularnewline
+Pure Error & 5 & 348 & 69.6 &\tabularnewline
+Total & 21 & 115732.58 & &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\item
+  \(H_A: \beta_1 < 0\) t-statistic given is -4.45. The P(t \textless{}
+  -4.45) = 0.000, from which we can reject the null hypothesis of zero
+  slope.
+\item
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    We committed a Type I error. The slope really is zero, but our data
+    is unusual suggesting that it was less than 0.
+  \item
+    The relationship between x and y is indeed linear.
+  \item
+    A linear function fits the data okay, but a curved function would fit
+    the data even better.
+  \end{enumerate}
+\end{enumerate}
+
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{5}
+\item
+  From the table above, we calculated an F-value for lack of fit to be
+  55.373 with a p-value of 0.000.
+\item
+  Based on the conclusion from the lack of fit test, outcome 3 seems
+  most likely: a linear function fits the data okay, but a curved
+  function would fit the data even better.
+\end{enumerate}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
